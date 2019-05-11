@@ -15,7 +15,7 @@
 
 
     <meta name="description" content="最近在閱讀CLRS，堪稱是演算法的聖經讀本。在2.3節，提到了使用分治法設計的$\Theta(n\lg n)$排序演算法：合併排序(merge sort)。其概念非常簡單：  若欲排序的序列元素數量大於1，則將序列分成兩半；若否，直接返回不必排序 分別對左邊及右邊的子序列，做合併排序 將排序好的兩子序列做合併，得到排序好的序列">
-<meta name="keywords" content="algorithms,sorting,merge sort,python,divide-and-conquer">
+<meta name="keywords" content="algorithms,sorting,merge sort,divide-and-conquer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="只需要n&#x2F;2額外空間的合併排序">
 <meta property="og:url" content="https://ring4six.github.io/2019/05/06/只需要n-2額外空間的合併排序/index.html">
@@ -23,7 +23,7 @@
 <meta property="og:description" content="最近在閱讀CLRS，堪稱是演算法的聖經讀本。在2.3節，提到了使用分治法設計的$\Theta(n\lg n)$排序演算法：合併排序(merge sort)。其概念非常簡單：  若欲排序的序列元素數量大於1，則將序列分成兩半；若否，直接返回不必排序 分別對左邊及右邊的子序列，做合併排序 將排序好的兩子序列做合併，得到排序好的序列">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ring4six.github.io/2019/05/06/只需要n-2額外空間的合併排序/merge_sort_insert_k.png">
-<meta property="og:updated_time" content="2019-05-08T01:54:03.627Z">
+<meta property="og:updated_time" content="2019-05-11T07:32:32.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="只需要n&#x2F;2額外空間的合併排序">
 <meta name="twitter:description" content="最近在閱讀CLRS，堪稱是演算法的聖經讀本。在2.3節，提到了使用分治法設計的$\Theta(n\lg n)$排序演算法：合併排序(merge sort)。其概念非常簡單：  若欲排序的序列元素數量大於1，則將序列分成兩半；若否，直接返回不必排序 分別對左邊及右邊的子序列，做合併排序 將排序好的兩子序列做合併，得到排序好的序列">
@@ -89,6 +89,8 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
+            <a class="navbar-item " href="/categories">Categories</a>
+            
             <a class="navbar-item " href="/tags">Tags</a>
             
             <a class="navbar-item " href="/about">About</a>
@@ -101,6 +103,26 @@
                 <i class="fas fa-search"></i>
             </a>
             
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#只需要n-2額外空間的合併排序">1&nbsp;&nbsp;<b>只需要n/2額外空間的合併排序</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#合併排序">2&nbsp;&nbsp;<b>合併排序</b></a>
+                    
+                </div>
+            </div>
             
             
         </div>
@@ -161,12 +183,21 @@
     
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/merge-sort/">#merge sort</a></span>
     
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/python/">#python</a></span>
-    
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/divide-and-conquer/">#divide-and-conquer</a></span>
     
     </div>
     
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/05/10/Linux逆向工程-dlroW-olleH/">Linux逆向工程-dlroW olleH</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-next">
+            
+        </span>
+    </div>
     
 </article>
 

@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives - Ring4Six</title>
+<title>Tag: reverse engineering - Ring4Six</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -16,7 +16,7 @@
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Ring4Six">
-<meta property="og:url" content="https://ring4six.github.io/archives/index.html">
+<meta property="og:url" content="https://ring4six.github.io/tags/reverse-engineering/index.html">
 <meta property="og:site_name" content="Ring4Six">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
@@ -80,7 +80,7 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item is-active" href="/archives">Archives</a>
+            <a class="navbar-item " href="/archives">Archives</a>
             
             <a class="navbar-item " href="/categories">Categories</a>
             
@@ -102,34 +102,52 @@
     </div>
 </nav>
 
-    <section class="section">
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#reverse engineering</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
     <div class="container">
     
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/05/10/Linux逆向工程-dlroW-olleH/" itemprop="url">Linux逆向工程-dlroW olleH</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-09T23:21:40.000Z" itemprop="datePublished">May 10 2019</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <div class="archive content">
-            <h4 class="title is-4" id="2019">2019</h4>
-            <div class="articles">
-            
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-05-11T06:59:06.000Z" itemprop="datePublished">
-                        May 11</time>
-                    <h6 class="title is-6"><a href="/2019/05/11/教女友Python資料分析-1-把玩Python/">教女友Python資料分析-1.把玩Python</a></h6>
-                </div>
-            
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-05-09T23:21:40.000Z" itemprop="datePublished">
-                        May 10</time>
-                    <h6 class="title is-6"><a href="/2019/05/10/Linux逆向工程-dlroW-olleH/">Linux逆向工程-dlroW olleH</a></h6>
-                </div>
-            
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-05-06T09:43:53.000Z" itemprop="datePublished">
-                        May 6</time>
-                    <h6 class="title is-6"><a href="/2019/05/06/只需要n-2額外空間的合併排序/">只需要n/2額外空間的合併排序</a></h6>
-                </div>
-            
-            </div>
-        </div>
+        <p>這篇文章用來展示一系列最基本的Linux逆向工程工具，包含:</p>
+<ul>
+<li><code>file &lt;executable&gt;</code>：辨別檔案類型</li>
+<li><code>strings &lt;executable&gt;</code>：列出檔案中的字串</li>
+<li><code>ltrace &lt;executable&gt;</code>：執行<code>&lt;executable&gt;</code>，列出所有的library call</li>
+<li><code>strace &lt;executable&gt;</code>：執行<code>&lt;executable&gt;</code>，列出所有的system call</li>
+<li><code>objdump -d &lt;executable&gt;</code>：將<code>&lt;executable&gt;</code>反組譯，</li>
+<li><code>gdb -q &lt;executable&gt;</code>：一步步執行程式進行動態分析</li>
+</ul>
+        <p class="article-more-link">
+            <a href="/2019/05/10/Linux逆向工程-dlroW-olleH/#more">Read More</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
     
     
     </div>

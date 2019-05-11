@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives - Ring4Six</title>
+<title>Linux逆向工程-dlroW olleH - Ring4Six</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,13 +14,18 @@
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Ring4Six">
-<meta property="og:url" content="https://ring4six.github.io/archives/index.html">
+    <meta name="description" content="這篇文章用來展示一系列最基本的Linux逆向工程工具，包含:  file &amp;lt;executable&amp;gt;：辨別檔案類型 strings &amp;lt;executable&amp;gt;：列出檔案中的字串 ltrace &amp;lt;executable&amp;gt;：執行&amp;lt;executable&amp;gt;，列出所有的library call strace &amp;lt;executable&amp;gt;：執行&amp;lt;exec">
+<meta name="keywords" content="linux,reverse engineering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux逆向工程-dlroW olleH">
+<meta property="og:url" content="https://ring4six.github.io/2019/05/10/Linux逆向工程-dlroW-olleH/index.html">
 <meta property="og:site_name" content="Ring4Six">
+<meta property="og:description" content="這篇文章用來展示一系列最基本的Linux逆向工程工具，包含:  file &amp;lt;executable&amp;gt;：辨別檔案類型 strings &amp;lt;executable&amp;gt;：列出檔案中的字串 ltrace &amp;lt;executable&amp;gt;：執行&amp;lt;executable&amp;gt;，列出所有的library call strace &amp;lt;executable&amp;gt;：執行&amp;lt;exec">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-10T01:21:05.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ring4Six">
+<meta name="twitter:title" content="Linux逆向工程-dlroW olleH">
+<meta name="twitter:description" content="這篇文章用來展示一系列最基本的Linux逆向工程工具，包含:  file &amp;lt;executable&amp;gt;：辨別檔案類型 strings &amp;lt;executable&amp;gt;：列出檔案中的字串 ltrace &amp;lt;executable&amp;gt;：執行&amp;lt;executable&amp;gt;，列出所有的library call strace &amp;lt;executable&amp;gt;：執行&amp;lt;exec">
 
 
 
@@ -80,7 +85,7 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item is-active" href="/archives">Archives</a>
+            <a class="navbar-item " href="/archives">Archives</a>
             
             <a class="navbar-item " href="/categories">Categories</a>
             
@@ -97,6 +102,28 @@
             </a>
             
             
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#GDB">1&nbsp;&nbsp;<b>GDB</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#流程控制">1.1&nbsp;&nbsp;流程控制</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#系統狀態檢測">1.2&nbsp;&nbsp;系統狀態檢測</a>
+                    
+                </div>
+            </div>
+            
             
         </div>
     </div>
@@ -104,34 +131,126 @@
 
     <section class="section">
     <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Linux逆向工程-dlroW olleH
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-05-09T23:21:40.000Z" itemprop="datePublished">May 10 2019</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>這篇文章用來展示一系列最基本的Linux逆向工程工具，包含:</p>
+<ul>
+<li><code>file &lt;executable&gt;</code>：辨別檔案類型</li>
+<li><code>strings &lt;executable&gt;</code>：列出檔案中的字串</li>
+<li><code>ltrace &lt;executable&gt;</code>：執行<code>&lt;executable&gt;</code>，列出所有的library call</li>
+<li><code>strace &lt;executable&gt;</code>：執行<code>&lt;executable&gt;</code>，列出所有的system call</li>
+<li><code>objdump -d &lt;executable&gt;</code>：將<code>&lt;executable&gt;</code>反組譯，</li>
+<li><code>gdb -q &lt;executable&gt;</code>：一步步執行程式進行動態分析</li>
+</ul>
+<a id="more"></a>
+<h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><ul>
+<li><code>b &lt;breakpoint&gt;</code>：<code>&lt;breakpoint&gt;</code>可以是函式名稱（如<code>b main</code>或<code>b *main</code>）、或位址（如<code>b *0x55555555463e</code>）</li>
+<li><code>run</code>：開始執行程式</li>
+<li><code>disass</code>：反組譯目前程式執行到的片段（<code>=&gt;</code>所在行會代表下一個執行位置）</li>
+<li><code>si</code>：step in，前進，會進到函式裡面</li>
+<li><code>n</code>：next，前進，不進道函式裡面</li>
+<li><code>u *&lt;address&gt;</code>或<code>u &lt;func&gt;</code>：執行直到<code>&lt;address&gt;</code>，執行直到回到<code>&lt;func&gt;</code>，主要用來從callee迅速跳回caller</li>
+</ul>
+<h2 id="系統狀態檢測"><a href="#系統狀態檢測" class="headerlink" title="系統狀態檢測"></a>系統狀態檢測</h2><ul>
+<li><code>info registers</code>：列出常用的暫存器值，<ul>
+<li><code>info all-registers</code>：列出所有暫存器值（包含SSE等）</li>
+<li><code>print $&lt;register&gt;</code>：印出<code>&lt;register&gt;</code>中的值，例如:<code>print $rbp</code></li>
+</ul>
+</li>
+<li><code>x/nfu addr</code>:<ul>
+<li><code>n</code>：表示輸出連續<code>n</code>個單位(由<code>u</code>決定)</li>
+<li><code>f</code>：輸出格式<ul>
+<li>o - octal</li>
+<li>x - hexadecimal</li>
+<li>d - decimal</li>
+<li>u - unsigned decimal</li>
+<li>t - binary</li>
+<li>f - floating point</li>
+<li>a - address</li>
+<li>c - char</li>
+<li>s - string</li>
+<li>i - instruction</li>
+</ul>
+</li>
+<li><code>u</code>：單位<ul>
+<li>b - byte</li>
+<li>h - halfword（16-bit）</li>
+<li>w - word（32-bit） </li>
+<li>g - giant word（64-bit）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/linux/">#linux</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/reverse-engineering/">#reverse engineering</a></span>
+    
+    </div>
     
     
-        <div class="archive content">
-            <h4 class="title is-4" id="2019">2019</h4>
-            <div class="articles">
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-05-11T06:59:06.000Z" itemprop="datePublished">
-                        May 11</time>
-                    <h6 class="title is-6"><a href="/2019/05/11/教女友Python資料分析-1-把玩Python/">教女友Python資料分析-1.把玩Python</a></h6>
-                </div>
+            <a href="/2019/05/11/教女友Python資料分析-1-把玩Python/">教女友Python資料分析-1.把玩Python</a>
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-05-09T23:21:40.000Z" itemprop="datePublished">
-                        May 10</time>
-                    <h6 class="title is-6"><a href="/2019/05/10/Linux逆向工程-dlroW-olleH/">Linux逆向工程-dlroW olleH</a></h6>
-                </div>
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-05-06T09:43:53.000Z" itemprop="datePublished">
-                        May 6</time>
-                    <h6 class="title is-6"><a href="/2019/05/06/只需要n-2額外空間的合併排序/">只需要n/2額外空間的合併排序</a></h6>
-                </div>
+            <a href="/2019/05/06/只需要n-2額外空間的合併排序/">只需要n/2額外空間的合併排序</a>
             
-            </div>
-        </div>
+        </span>
+    </div>
     
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
     
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://ring4six.github.io/2019/05/10/Linux逆向工程-dlroW-olleH/';
+        this.page.identifier = '2019/05/10/Linux逆向工程-dlroW-olleH/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'ring4six' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
     </div>
 </section>
     <footer class="footer">
